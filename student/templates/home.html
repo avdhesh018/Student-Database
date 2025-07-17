@@ -1,0 +1,30 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<div class="container">
+    <form>
+        <div class="mb-3">
+        <label  class="form-label">Enrollment Number</label>
+        <input type="text" class="form-control" name="searchEnroll"/>
+        </div>
+        <button type="submit" class="btn btn-primary"> Search </button>
+  </form>
+  <div class="row">
+  {% for i in students %}
+  <div class="col">
+    <h3> {{i.name}} </h3>
+    <p> {{i.roll}} </p>
+    <a href="{% url 'detail' i.id %}"> <p> {{i.enroll}} </p> </a>
+    <img src="{{i.photo.url}}" width="200" height="200"/>
+    {% if i.url %}
+      <p> <a href="{{i.url}}">@{{i.name}}</a> </p>
+    {% endif %}
+    <p>{{i.email}}</p>
+    <p>{{i.desc}}</p>
+  </div>
+  {% endfor %}
+</div>
+</div>
+
+{% endblock %}

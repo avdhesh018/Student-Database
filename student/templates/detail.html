@@ -1,0 +1,45 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+      {% if error %}
+        <div class="alert alert-danger">{{error}}</div>
+        {% else %}
+        <h2> {{students.name}} </h2>
+        <p> {{students.roll}} </p>
+        <p> {{students.enroll}} </p>
+        <img src="{{students.photo.url}}" width="200" height="200"/>
+        {% if students.url %}
+          <p> <a href="{{students.url}}">@{{students.name}}</a> </p>
+        {% endif %}
+        <p>{{students.email}}</p>
+        <p>{{students.desc}}</p>
+        <hr>
+        <h3> MARKS </h3>
+        <ul>
+          <li> PYTHON : {{students.python}} </li>
+          <li> FSD : {{students.fsd}} </li>
+          <li> COA : {{students.coa}} </li>
+        </ul>
+
+        
+        {% if is_faculty %}
+        <a href="{% url 'edit_marks' students.id %}" class="btn btn-warning">EDIT MARKS</a>
+        <a href="{% url 'delete_student' students.id %}" class="btn btn-danger">DELETE STUDENT</a>
+          
+        {% endif %}
+      {% endif %}
+    </div>
+</body>
+</html>
+
+{% endblock %}

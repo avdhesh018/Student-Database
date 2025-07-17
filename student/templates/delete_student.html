@@ -1,0 +1,29 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Delete Student for {{students.name}} ({{students.enroll}})</h2>
+        <p>
+            Are You Sure, You Want To Delete The Student ❓
+        </p>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger"> DELETE 💀  </button>
+            <a href="{% url 'detail' students.id %}">
+                <button type="button" class="btn btn-secondary"> BACK ☺ </button>
+            </a>
+        </form>
+    </div>
+</body>
+</html>
+
+{% endblock %}
